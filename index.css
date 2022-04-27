@@ -1,0 +1,261 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --input-border: #8b8a8b;
+  --input-focus-h: 245;
+  --input-focus-s: 100%;
+  --input-focus-l: 42%;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  background: #27272c;
+  color: #278ea5;
+}
+
+h1 {
+  font-family: monospace;
+  font-size: 32pt;
+  font-weight: 800;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 250px;
+}
+
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  background: #70707a;
+  border: 1px solid #27272c;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-weight: 500;
+  font-family: "Nunito", sans-serif;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+  border: 1px solid black;
+  outline: none;
+}
+
+input[type="text"]::placeholder, textarea::placeholder {
+  color: #44444b;
+  font-weight: 500;
+}
+
+.small {
+  font-size: 10pt;
+  color: #70707a;
+}
+
+label:not(.checkbox) {
+  font-weight: bold;
+}
+
+.paste {
+  font-family: monospace;
+  font-size: 60pt;
+  border: 10px dashed #70707a;
+  color: #70707a;
+  padding: 50px;
+  border-radius: 9px;
+  max-width: 400px;
+  text-align: center;
+  user-select: none;
+}
+
+.paste.mobile{
+  display: none;
+  border: 1px solid #27272c;
+  background: #33333b;
+  border-radius: 4px;
+  padding: 10px;
+  max-width: 500px;
+  height: 400px;
+  resize:none;
+  font-size: unset;
+  font-family: 'Nunito', sans-serif;
+  text-align: left;
+  color: #212125;
+}
+
+.paste_container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.success {
+  background-color: #33333b;
+  border: 1px solid #27272c;
+  padding: 15px 10px;
+  border-radius: 4px;
+  position: absolute;
+  max-height: 100%;
+  max-width: 50%;
+  overflow: auto;
+  display: none;
+}
+
+.success .success_text {
+  color: #329f5b;
+  font-weight: bold;
+  text-align: center;
+}
+
+.success > pre {
+  font-size: 10pt;
+  color: white;
+  width: fit-content;
+}
+
+pre .keyword {
+  color: #bd4089;
+  font-weight: bold;
+  font-style: italic;
+}
+
+pre .function.selector {
+  color: #278ea5;
+  font-weight: bold;
+}
+
+pre .punctuation {
+  color: #8b8a8b;
+}
+
+.success::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    #ffd33d,
+    #ea4aaa 17%,
+    #b34bff 34%,
+    #01feff 51%,
+    #ffd33d 68%,
+    #ea4aaa 85%,
+    #b34bff
+  );
+  background-size: 300% 100%;
+  animation: rainbow 2s linear infinite, progress 15s linear;
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0;
+  }
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  right: 2%;
+  gap: 20px;
+  transform: translateY(-50%);
+}
+
+.copy{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+  .paste {
+    display: none;
+  }
+
+  .paste.mobile{
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    margin-bottom: 60px;
+  }
+
+  .content {
+    flex-direction: column-reverse;
+    position: relative;
+    margin-left: 2%;
+    margin-right: 2%;
+    left: 0;
+    right: 0;
+    transform: none;
+    gap: 60px;
+  }
+
+  .success {
+    position: relative;
+    max-width: 100%;
+  }
+
+  .paste_container{
+    width: 100%;
+  }
+
+  form{
+    max-width: 100%;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+  height: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #27272c;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #212125;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+

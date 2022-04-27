@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Excel to Latex</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <h1>Happily paste your Excel Data here!</h1>
+    <div class="content">
+        <form>
+            <div>
+                <label for="caption">Caption:</label>
+                <input type="text" placeholder="My Table" id="caption" name="caption" />
+            </div>
+            <div>
+                <label for="position">Position:</label>
+                <select id="position" name="position">
+                    <option value="H" selected>H - Force here</option>
+                    <option value="h">h - here</option>
+                    <option value="t">t - top</option>
+                    <option value="b">b - bottom</option>
+                    <option value="p">p - page</option>
+                </select>
+                <div class="small">Be aware that <code>H</code> needs <code>\usepackage{float}</code> to function
+                    properly</div>
+            </div>
+            <div>
+                <input type="checkbox" id="centering" name="centering" checked />
+                <label for="centering" class="checkbox">Center Figure on page</label>
+            </div>
+            <div>
+                <input type="checkbox" id="bold" name="bold" checked />
+                <label for="bold" class="checkbox">Table has Header</label>
+            </div>
+            <div>
+                <input type="checkbox" id="math" name="math" />
+                <label for="math" class="checkbox">Wrap cells in <code>$...$</code></label>
+            </div>
+            <div>
+                <input type="checkbox" id="borders" name="borders" />
+                <label for="borders" class="checkbox">Hide Borders</label>
+            </div>
+            <div>
+                <label for="alignment">Alignment:</label>
+                <select id="alignment" name="alignment">
+                    <option value="l" selected>l - left</option>
+                    <option value="c">c - center</option>
+                    <option value="r">r - right</option>
+                </select>
+            </div>
+        </form>
+        <div class="paste_container">
+            <div class="paste">
+                Ctrl + V
+            </div>
+            <textarea class="paste mobile" placeholder="Paste your Excel Table..."></textarea>
+            <div class="success">
+                <div class="success_text">Your LaTeX Code has been Copied to your Clipboard 👍</div>
+                <pre><code class="language-tex" id="latex">
+                </code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="copy small">&copy; <span id="year"></span>, Lukas Schreiber</div>
+    <script src="./index.js"></script>
+    <script src="./prism.js"></script>
+</body>
+
+</html>

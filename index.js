@@ -21,7 +21,11 @@ document.addEventListener('paste', (evt)=>{
                 return `
                 ${row.map((cell, j) => {
                     if(i === 0 && settings.bold){
-                        return `\\textbf{${escapeLatex(cell)}} ${j < tableWidth - 1 ? "& " : "\\\\"}`
+                        if(settings.math){
+                            return `\\textbf{$${escapeLatex(cell)}$} ${j < tableWidth - 1 ? "& " : "\\\\"}`
+                        }else{
+                            return `\\textbf{${escapeLatex(cell)}} ${j < tableWidth - 1 ? "& " : "\\\\"}`
+                        }
                     }else{
                         if(settings.math){
                             return `$${escapeLatex(cell)}$ ${j < tableWidth - 1 ? "& " : "\\\\"}`
@@ -67,7 +71,8 @@ const showLatex = (latex) => {
 }
 
 const escapeLatex = (latex) => {
-    return latex.toString().trim().replace(/#/g, '\\#');
+    return latex.toString().trim()
+                .replace(/#/g, '\\#');
 }
 
 const handleize = (text) => {

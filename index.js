@@ -75,6 +75,8 @@ const escapeLatex = (latex) => {
                 .replace(/#/g, '\\#')
                 .replace(/\[/g, '{\[}')
                 .replace(/\]/g, '{\]}')
+                .replace(/\{/g, '\\{')
+                .replace(/\}/g, '\}')
                 .replace(/%/g, '\\%');
 
 }

@@ -221,6 +221,13 @@ pre .punctuation {
     gap: 60px;
   }
 
+  .copy {
+    position: relative;
+    text-align: right;
+    right:0;
+    bottom:0;
+  }
+
   .success {
     position: relative;
     max-width: 100%;

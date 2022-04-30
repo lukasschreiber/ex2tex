@@ -22,7 +22,7 @@ document.addEventListener('paste', (evt)=>{
                 ${row.map((cell, j) => {
                     if(i === 0 && settings.bold){
                         if(settings.math){
-                            return `$${escapeLatex(cell)}$ ${j < tableWidth - 1 ? "& " : "\\\\"}`
+                            return `$\\mathbf{${escapeLatex(cell)}}$ ${j < tableWidth - 1 ? "& " : "\\\\"}`
                         }else{
                             return `\\textbf{${escapeLatex(cell)}} ${j < tableWidth - 1 ? "& " : "\\\\"}`
                         }

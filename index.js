@@ -22,13 +22,13 @@ document.addEventListener('paste', (evt)=>{
                 ${row.map((cell, j) => {
                     if(i === 0 && settings.bold){
                         if(settings.math){
-                            return `$\\mathbf{${escapeLatex(cell)}}$ ${j < tableWidth - 1 ? "& " : "\\\\"}`
+                            return `$\\mathbf{${escapeLatexMath(cell)}}$ ${j < tableWidth - 1 ? "& " : "\\\\"}`
                         }else{
                             return `\\textbf{${escapeLatex(cell)}} ${j < tableWidth - 1 ? "& " : "\\\\"}`
                         }
                     }else{
                         if(settings.math){
-                            return `${escapeLatex(cell) !== "" ? `$${escapeLatex(cell)}$` : ''} ${j < tableWidth - 1 ? "& " : "\\\\"}`
+                            return `${escapeLatexMath(cell) !== "" ? `$${escapeLatexMath(cell)}$` : ''} ${j < tableWidth - 1 ? "& " : "\\\\"}`
                         }else{
                             return `${escapeLatex(cell)} ${j < tableWidth - 1 ? "& " : "\\\\"}`
                         }
@@ -79,6 +79,13 @@ const escapeLatex = (latex) => {
                 .replace(/\}/g, '\}')
                 .replace(/%/g, '\\%');
 
+}
+
+const escapeLatexMath = (latex) => {
+    return escapeLatex(latex).replace(/ä/g, 'ae')
+                            .replace(/ö/g, 'oe')
+                            .replace(/ü/g, 'ue')
+                            .replace(/ß/g, 'ss');
 }
 
 const handleize = (text) => {

@@ -28,7 +28,7 @@ document.addEventListener('paste', (evt)=>{
                         }
                     }else{
                         if(settings.math){
-                            return `$${escapeLatex(cell)}$ ${j < tableWidth - 1 ? "& " : "\\\\"}`
+                            return `${escapeLatex(cell) !== "" ? `$${escapeLatex(cell)}$` : ''} ${j < tableWidth - 1 ? "& " : "\\\\"}`
                         }else{
                             return `${escapeLatex(cell)} ${j < tableWidth - 1 ? "& " : "\\\\"}`
                         }

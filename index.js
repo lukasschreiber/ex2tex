@@ -87,9 +87,10 @@ const escapeLatex = (latex) => {
 }
 
 const escapeLatexMath = (latex) => {
-    return escapeLatex(latex).replace(/ä/g, 'ae')
-                            .replace(/ö/g, 'oe')
-                            .replace(/ü/g, 'ue')
+    return escapeLatex(latex).replace(/ä/g, '\\ddot{a}')
+                            .replace(/ö/g, '\\ddot{o}')
+                            .replace(/ü/g, '\\ddot{u}')
+                            .replace(/°/g, '{}^{\\circ}')
                             .replace(/ß/g, 'ss');
 }
 

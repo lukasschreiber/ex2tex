@@ -65,7 +65,10 @@
                     <option value="bottom" selected>Bottom - default</option>
                     <option value="top">Top</option>
                 </select>                
-                <div class="small">Position of the caption below or above <code>tabular</code>. Margins are <code>10pt</code>.</div>
+                <div class="small">Position of the caption below or above <code>tabular</code>. Use this option only if you have just one table in your Layout where the caption should be on top. Otherwise you can use <code>\usepackage{float}
+                    \floatstyle{plaintop}
+                    \restylefloat{table}
+                    \usepackage[tableposition=top]{caption}</code></div>
             </div>
         </form>
         <div class="paste_container">

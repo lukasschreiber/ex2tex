@@ -10,12 +10,15 @@ document.addEventListener('paste', (evt)=>{
         bold: document.querySelector('#bold').checked,
         math: document.querySelector('#math').checked,
         borders: !document.querySelector('#borders').checked,
-        alignment: document.querySelector('#alignment').value || "l"
+        alignment: document.querySelector('#alignment').value || "l",
+        caption_on_top: document.querySelector('#caption_position').value === "top"
     }
 
     const latexRaw = `
         \\begin{table}[${settings.position}]
             ${settings.centering ? "\\centering" : ""}
+            ${settings.caption_on_top ? `\\caption{${document.querySelector('input#caption')?.value || "My Table"}}
+            \\vspace{10pt}` : ""}
             \\begin{tabular}{${((settings.borders ? "|" : " ").concat(settings.alignment)).repeat(tableWidth)}${settings.borders ? "|" : " "}}
                 ${settings.borders ? "\\hline" : ""} ${table.map((row, i) => {
                 return `
@@ -37,7 +40,7 @@ document.addEventListener('paste', (evt)=>{
                 ${settings.borders ? "\\hline" : ""}`
                 }).join("")}
             \\end{tabular}
-            \\caption{${document.querySelector('input#caption')?.value || "My Table"}}                
+            ${!settings.caption_on_top && `\\caption{${document.querySelector('input#caption')?.value || "My Table"}}`}                
             \\label{${document.querySelector('input#caption')?.value ? "tab:"+handleize(document.querySelector('input').value) : "tab:my-table"}}
         \\end{table}
     `;

@@ -1,7 +1,7 @@
 document.addEventListener('paste', (evt)=>{
     if(evt.target.nodeName.toLowerCase() === "input") return;
     const tableClipboard = (evt.clipboardData || window.clipboardData).getData('text');
-    const table = tableClipboard.split("\n").replace("\r", "").map(row => row.split("\t")).filter(row => (row.filter(cell => cell !== '')).length > 0);
+    const table = tableClipboard.split("\n").map(row => row.split("\t").map(cell => cell.replace("\r", ""))).filter(row => (row.filter(cell => cell !== '')).length > 0);
     const tableWidth = table[0].length;
 
     const settings = {

@@ -81,18 +81,19 @@ const escapeLatex = (latex) => {
                 .replace(/\[/g, '{\[}')
                 .replace(/\]/g, '{\]}')
                 .replace(/\{/g, '\\{')
-                .replace(/\}/g, '\}')
+                .replace(/\}/g, '\\}')
                 .replace(/%/g, '\\%');
 
 }
 
 const escapeLatexMath = (latex) => {
-    return escapeLatex(latex).replace(/ä/g, '\\ddot{a}')
+    return latex.replace(/ä/g, '\\ddot{a}')
                             .replace(/ö/g, '\\ddot{o}')
                             .replace(/ü/g, '\\ddot{u}')
                             .replace(/Ä/g, '\\ddot{A}')
                             .replace(/Ö/g, '\\ddot{O}')
                             .replace(/Ü/g, '\\ddot{U}')
+                            .replace(/%/g, '\\%')
                             .replace(/°/g, '{}^{\\circ}')
                             .replace(/ß/g, 'ss');
 }

@@ -78,10 +78,10 @@ const showLatex = (latex) => {
 const escapeLatex = (latex) => {
     return latex.toString().trim()
         .replace(/#/g, '\\#')
-        .replace(/\[/g, '{\[}')
-        .replace(/\]/g, '{\]}')
         .replace(/\{/g, '\\{')
         .replace(/\}/g, '\\}')
+        .replace(/\[/g, '{\[}')
+        .replace(/\]/g, '{\]}')
         .replace(/%/g, '\\%');
 
 };
